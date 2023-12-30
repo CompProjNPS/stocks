@@ -10,7 +10,6 @@ start_date = '2020-12-1'
 end_date='2023-2-2'
 a=input("Enter the ticker")
 amazon=yf.download(tickers=a,start=start_date,end=end_date)
-print(amazon.head())
 
 
 

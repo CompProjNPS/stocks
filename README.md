@@ -4,6 +4,7 @@ Web scraping and Stocks
 # Dependencies:
 1. Seaborn
 2. Yahoo Finance (yfinance)
+3. Tkcalendar
 
 # TODO:
 1. Drop down menu to choose ticker

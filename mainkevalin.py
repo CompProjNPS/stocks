@@ -98,10 +98,9 @@ def data():
         dtestat = ("Debt b/w 1 and 2 times of assets.")
     else:
         dtestat = ("High risk. Maybe fine in very large companies in fixed-heavy industries.")
-    #b/w 15% -45% ideally  
+    #Depends on size of company hence we don't comment 
     rg = yf.Ticker(ticker).info['revenueGrowth']
-    
-    return ((fPE, fPEstat), (PEGratio, PEGratiostat), (dte, dtestat), (rg, rgstat))
+    return ((fPE, fPEstat), (PEGratio, PEGratiostat), (dte, dtestat), rg)
     '''
     To Arjun:
     Display the above in GUI

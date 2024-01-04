@@ -73,7 +73,7 @@ def get_data():
     return ticker, company, start_date, end_date
 
 def data():
-    #P/E ratio -> higher the better; maybe overvalued
+    #Price to Earnings ratio -> higher the better; maybe overvalued
     fPE = yf.Ticker(ticker).info['forwardPE']
     if fPE < 20:
         fPEstat = "Good"

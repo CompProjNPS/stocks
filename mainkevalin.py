@@ -73,11 +73,15 @@ def get_data():
     return ticker, company, start_date, end_date
 
 def data():
-    print(yf.Ticker(ticker).info['forwardPE']) #P/E ratio -> higher the better; maybe overvalued
-    print(yf.Ticker(ticker).info['pegRatio'])  #Price/Ernings-to-Growth lower than 1.0
-    print(yf.Ticker(ticker).info['debtToEquity'])  #debt to equity ratio. Always < 2.0 Industry dependent
-                                                     #pref. < 0.5 and < 0.1 is better
-    print(yf.Ticker(ticker).info['revenueGrowth'])  #b/w 15% -45% ideally
+    #P/E ratio -> higher the better; maybe overvalued
+    global forwardPE = yf.Ticker(ticker).info['forwardPE']
+    #Price/Earnings-to-Growth lower than 1.0
+    global PEGratio = yf.Ticker(ticker).info['pegRatio']
+    #debt to equity ratio. Always < 2.0 Industry dependent
+    #pref. < 0.5 and < 0.1 is better
+    global dte = yf.Ticker(ticker).info['debtToEquity']
+    #b/w 15% -45% ideally  
+    global revenueGrowth = yf.Ticker(ticker).info['revenueGrowth']
     '''
     To Arjun:
     Display the above in GUI

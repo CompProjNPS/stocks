@@ -74,14 +74,34 @@ def get_data():
 
 def data():
     #P/E ratio -> higher the better; maybe overvalued
-    forwardPE = yf.Ticker(ticker).info['forwardPE']
+    fPE = yf.Ticker(ticker).info['forwardPE']
+    if fPE < 20:
+        fPEstat = "Good"
+    elif fPE < 25:
+        fPEstat = "Average"
+    else:
+        fPEstat = "Bad" 
     #Price/Earnings-to-Growth lower than 1.0
     PEGratio = yf.Ticker(ticker).info['pegRatio']
+    if PEGratio < 1:
+        PEGratiostat = "Fairly priced to under-valued"
+    elif PEGratio < 2:
+        PEGratiostat = "Fairly priced"
+    else:
+        PEGratiostat = "Overvalued. Beware!"
     #debt to equity ratio. Always < 2.0 Industry dependent
     #pref. < 0.5 and < 0.1 is better
     dte = yf.Ticker(ticker).info['debtToEquity']
+    if dte < 1:
+        dtestat = ("Lesser debt than assets. Safe bet.")
+    elif dte < 2:
+        dtestat = ("Debt b/w 1 and 2 times of assets.")
+    else:
+        dtestat = ("High risk. Maybe fine in very large companies in fixed-heavy industries.")
     #b/w 15% -45% ideally  
-    revenueGrowth = yf.Ticker(ticker).info['revenueGrowth']
+    rg = yf.Ticker(ticker).info['revenueGrowth']
+    
+    return ((fPE, fPEstat), (PEGratio, PEGratiostat), (dte, dtestat), (rg, rgstat))
     '''
     To Arjun:
     Display the above in GUI

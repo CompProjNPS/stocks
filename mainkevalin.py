@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns; sns.set()
 import ttkbootstrap as ttk
 from datetime import datetime
+import time
 
 # Window
 
@@ -64,12 +65,14 @@ def get_data():
         start_date = start_date[2]+'-'+str(int(start_date[1]))+'-'+str(int(start_date[0]))
         end_date = end_date_entry.entry.get().split('-')
         end_date = end_date[2]+'-'+str(int(end_date[1]))+'-'+str(int(end_date[0]))
+        print("Starting download")
+        t0 = time.time()
     company=yf.download(
         tickers=ticker,
         start=start_date,
         end=end_date
         )
-    
+    print("Tim3 elapsed indownload = ", time.time() - t0, "seconds")
     return ticker, company, start_date, end_date
 
 def data():
@@ -109,7 +112,6 @@ def data():
 
 def plot():
     get_data()
-    #data = data()
     d = plt.figure(figsize=(14,5))
     sns.set_style("ticks")
     sns.lineplot(data=company,x="Date",y='Close',color='firebrick')

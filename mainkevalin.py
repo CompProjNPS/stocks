@@ -109,7 +109,7 @@ def data():
 
 def plot():
     get_data()
-    data = data()
+    #data = data()
     d = plt.figure(figsize=(14,5))
     sns.set_style("ticks")
     sns.lineplot(data=company,x="Date",y='Close',color='firebrick')
